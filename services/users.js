@@ -9,7 +9,11 @@ index++;
 
 class UsersService{
   async getUsers(){
-      return users || null;
+    const usersFiltered = users.map(u =>{
+      const {name, lastName, email} = u
+     return {name, lastName, email}
+    })
+    return usersFiltered || null;
   }
 
   async getUser(email){
@@ -48,7 +52,6 @@ class UsersService{
       }
     }
     user.id = index;
-
     index++;
     users.push(user)
     // fs.writeFileSync('users.json',JSON.stringify(users));

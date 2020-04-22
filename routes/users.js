@@ -64,9 +64,9 @@ const validationHandler = require('../utils/middleware/validationHandlers')
 
 //Get users
   router.get('/users',
-  validationHandler(autenticationUser),
   async function(req, res, next) {
     const { xauthuser } = req.params;
+    // req.setRequestHeader({'x-auth-user':xauthuser});
     try {
       const users = await usersService.getUsers();
       // const validateUserToken = await usersService.getIdByToken(xauthuser);
