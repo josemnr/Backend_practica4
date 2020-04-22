@@ -1,0 +1,8 @@
+[
+    {"name":"JoseManuel1","lastName":"Navarro","email":"is703801@iteso.mx","password":"1234","sexo":"H","id":1,"token":"oVDp8o50Hb-1"},
+    {"name":"JoseManuel2","lastName":"Ramirez","email":"is703802@iteso.mx","password":"1234","sexo":"H","id":2,"token":"AjBr5m80Eb-2"},
+    {"name":"JoseManuel3","lastName":"Navarro","email":"is703803@iteso.mx","password":"1234","sexo":"H","id":3,"token":"BqcR3m80fs-3"},
+    {"name":"JoseManuel4","lastName":"Ramirez","email":"is703804@iteso.mx","password":"1234","sexo":"H","id":4,"token":"CVdf8g90an-4"},
+    {"name":"JoseManuel5","lastName":"Navarro","email":"is703805@iteso.mx","password":"1234","sexo":"H","id":5},
+    {"name":"JoseManuel6","LastName":"Navarro","email":"is703806@iteso.mx","password":"1234","sexo":"H","id":6}
+]
