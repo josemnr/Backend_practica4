@@ -12,28 +12,21 @@ Content-Type: application/json
 
 ### Get users
 GET http://localhost:3000/api/users
-# Content-Type: application/json
+x-auth-user: "BqcR3m80fs-3"
 
-# {
-#     "xauthuser":"BqcR3m80fs-3"
-# }
 
 ### Get user
 GET http://localhost:3000/api/users/is703804@iteso.mx
-Content-Type: application/json
-
-{
-    "xauthuser":"CVdf8g90an-4"
-}
+x-auth-user: "CVdf8g90an-4"
 
 ### Create user
 POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "JoséTest",
+    "name": "JoséTest2",
     "lastName": "Navarro",
-    "email": "is7038test@iteso.mx",
+    "email": "is7038test2@iteso.mx",
     "password": "1234",
     "sexo": "H"
 }
@@ -41,9 +34,9 @@ Content-Type: application/json
 ### Update user
 PUT http://localhost:3000/api/users/is703802@iteso.mx
 Content-Type: application/json
+x-auth-user: "CVdf8g90an-4"
 
 {
-    "xauthuser":"oVDp8o50Hb-1",
     "name": "Manuel Update1",
     "lastName": "Ramírez",
     "email": "is7038Update@iteso.mx",
@@ -53,8 +46,4 @@ Content-Type: application/json
 
 ### Delete user
 DELETE http://localhost:3000/api/users/is703801@iteso.mx
-Content-Type: application/json
-
-{
-    "xauthuser":"oVDp8o50Hb-1"
-}
+x-auth-user: "oVDp8o50Hb-1"

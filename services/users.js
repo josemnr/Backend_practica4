@@ -10,8 +10,8 @@ index++;
 class UsersService{
   async getUsers(){
     const usersFiltered = users.map(u =>{
-      const {name, lastName, email} = u
-     return {name, lastName, email}
+      const {name, lastName, email, url} = u
+     return {name, lastName, email, url}
     })
     return usersFiltered || null;
   }
@@ -53,7 +53,12 @@ class UsersService{
     }
     user.id = index;
     index++;
-    users.push(user)
+    if(user.url){
+      users.push(user)
+    }else{
+      user.url =  `https://randomuser.me/api/portraits/${user.sexo=="H" ? "men" : "women"}/${user.id}.jpg`;
+      users.push(user);
+    }
     // fs.writeFileSync('users.json',JSON.stringify(users));
     return users;
   }
@@ -66,6 +71,7 @@ class UsersService{
       if(index > -1){
         users.splice(index, 1, user);
       }
+      // fs.writeFileSync('users.json',JSON.stringify(users));
       return users;
     }else{
       return null;
@@ -79,6 +85,7 @@ class UsersService{
       if(index > -1){
         users.splice(index,1);
       }
+      // fs.writeFileSync('users.json',JSON.stringify(users));
       return users;
     }else{
       return null;

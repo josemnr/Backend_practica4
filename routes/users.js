@@ -6,7 +6,6 @@ const {
   logInUserSchema,
   createUserSchema,
   updateUserSchema,
-  autenticationUser
 } = require('../utils/schema/users');
 const validationHandler = require('../utils/middleware/validationHandlers')
 
@@ -65,8 +64,7 @@ const validationHandler = require('../utils/middleware/validationHandlers')
 //Get users
   router.get('/users',
   async function(req, res, next) {
-    const { xauthuser } = req.params;
-    // req.setRequestHeader({'x-auth-user':xauthuser});
+    const  xauthuser  = req.header("x-auth-user");
     try {
       const users = await usersService.getUsers();
       // const validateUserToken = await usersService.getIdByToken(xauthuser);
@@ -77,6 +75,7 @@ const validationHandler = require('../utils/middleware/validationHandlers')
       //   throw new Error('invalid token');
       // }
       if(users){
+        console.log(xauthuser)
         res.status(200).json({
           data: users,
           message: 'users listed'
@@ -92,7 +91,6 @@ const validationHandler = require('../utils/middleware/validationHandlers')
 //Get user
   router.get('/users/:email',
   validationHandler({email: userEmailSCHEMA}, 'params'),
-  validationHandler(autenticationUser),
   async function(req, res, next) {
      const { email } = req.params;
     try {
@@ -135,7 +133,6 @@ const validationHandler = require('../utils/middleware/validationHandlers')
 //Delete user
   router.delete('/users/:email',
   validationHandler({email: userEmailSCHEMA}, 'params'),
-  validationHandler(autenticationUser),
   async function(req, res, next) {
     const { email } = req.params;
     try {
@@ -152,5 +149,20 @@ const validationHandler = require('../utils/middleware/validationHandlers')
       next(err);
     }
   });
+
+  function autenticar(req,res, next) {
+    if (req.header("x-auth-user") == undefined) {
+        res.status(401).send('Usuario no autenticado')
+        return
+    }
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].token == req.header("x-auth-user")) {
+            req.id = req.header("x-auth-user").split("-")[1]
+            next()
+            return
+        }
+    }
+    res.status(401).send('Usuario no autenticado')
+  }
 
 module.exports = router;
