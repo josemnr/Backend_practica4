@@ -50,7 +50,7 @@ const validationHandler = require('../utils/middleware/validationHandlers')
       const loggedUser = await usersService.logInUser(user);
       if(loggedUser){
         res.status(201).json({
-          data: loggedUser,
+          data: loggedUser.token,
           message: 'user logged'
         });
       }else{
