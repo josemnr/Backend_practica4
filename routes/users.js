@@ -28,10 +28,14 @@ const validationHandler = require('../utils/middleware/validationHandlers')
     const { body: user } = req;
     try {
       const createdUser = await usersService.createUser( user );
-      res.status(201).json({
-        data: createdUser,
-        message: 'user created'
-      });
+      if(createdUser){
+        res.status(201).json({
+          data: createdUser,
+          message: 'user created'
+        });
+      }else{
+        throw new Error('User already exist');
+      }
     } catch (err) {
       next(err);
     }
