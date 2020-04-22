@@ -48,8 +48,7 @@ class UsersService{
       }
     }
     user.id = index;
-    const randomizeToken = randomize('Aa0', 10)+"-"+user.id;
-    user.token = randomizeToken;
+
     index++;
     users.push(user)
     // fs.writeFileSync('users.json',JSON.stringify(users));
