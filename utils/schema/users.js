@@ -5,12 +5,16 @@ const userLastNameSchema = joi.string();
 const userEmailSCHEMA = joi.string().email();
 const userPasswordSchema = joi.string();
 const userGenderSchema = joi.string();
+const xAuthUserSchema = joi.string();
 
 const logInUserSchema = {
     email: userEmailSCHEMA.required(),
     password: userPasswordSchema.required(),
 };
 
+const autenticationUser = {
+    xauthuser: xAuthUserSchema.required()
+};
 
 const createUserSchema = {
     name: userNameSchema.required(),
@@ -21,6 +25,7 @@ const createUserSchema = {
 };
 
 const updateUserSchema = {
+    xauthuser: xAuthUserSchema.required(),
     name: userNameSchema,
     lastName: userLastNameSchema,
     email: userEmailSCHEMA,
@@ -32,5 +37,6 @@ module.exports = {
     userEmailSCHEMA,
     logInUserSchema,
     createUserSchema,
-    updateUserSchema
+    updateUserSchema,
+    autenticationUser
 };

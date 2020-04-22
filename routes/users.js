@@ -5,7 +5,8 @@ const {
   userEmailSCHEMA,
   logInUserSchema,
   createUserSchema,
-  updateUserSchema
+  updateUserSchema,
+  autenticationUser
 } = require('../utils/schema/users');
 const validationHandler = require('../utils/middleware/validationHandlers')
 
@@ -63,10 +64,18 @@ const validationHandler = require('../utils/middleware/validationHandlers')
 
 //Get users
   router.get('/users',
+  validationHandler(autenticationUser),
   async function(req, res, next) {
-    const { usersList } = req.query;
+    const { xauthuser } = req.params;
     try {
       const users = await usersService.getUsers();
+      // const validateUserToken = await usersService.getIdByToken(xauthuser);
+      // if(validateUserToken){
+      //   req.id = validateUserToken.id;
+      //   console.log(req.id);
+      // }else{
+      //   throw new Error('invalid token');
+      // }
       if(users){
         res.status(200).json({
           data: users,
@@ -83,6 +92,7 @@ const validationHandler = require('../utils/middleware/validationHandlers')
 //Get user
   router.get('/users/:email',
   validationHandler({email: userEmailSCHEMA}, 'params'),
+  validationHandler(autenticationUser),
   async function(req, res, next) {
      const { email } = req.params;
     try {
@@ -125,6 +135,7 @@ const validationHandler = require('../utils/middleware/validationHandlers')
 //Delete user
   router.delete('/users/:email',
   validationHandler({email: userEmailSCHEMA}, 'params'),
+  validationHandler(autenticationUser),
   async function(req, res, next) {
     const { email } = req.params;
     try {

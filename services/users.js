@@ -81,6 +81,17 @@ class UsersService{
       return null;
     }
   }
+
+  async getIdByToken(xauthuser){
+    const validateUserToken = users.find(u=> u.token === xauthuser);
+    if(validateUserToken){
+      validateUserToken.token.split("-");
+      validateUserToken.token.pop();
+      return validateUserToken.token;
+    }else{
+      return null;
+    }
+  }
 }
 
 module.exports = UsersService;
