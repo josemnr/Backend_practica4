@@ -6,7 +6,7 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-    "email": "is703802@iteso.mx",
+    "email": "is703803@iteso.mx",
     "password": "1234"
 }
 
@@ -14,20 +14,32 @@ Content-Type: application/json
 GET http://localhost:3000/api/users
 x-auth-user: "BqcR3m80fs-3"
 
-
 ### Get user
 GET http://localhost:3000/api/users/is703804@iteso.mx
 x-auth-user: "CVdf8g90an-4"
+
+### Get users by name
+GET http://localhost:3000/api/users?name=Jose
+x-auth-user: "BqcR3m80fs-3"
+
+### Get users by last name
+GET http://localhost:3000/api/users?lastName=Navarro
+x-auth-user: "BqcR3m80fs-3"
+
+### Get users by year
+GET http://localhost:3000/api/users?year=2019
+x-auth-user: "BqcR3m80fs-3"
 
 ### Create user
 POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "JoséTest2",
-    "lastName": "Navarro",
-    "email": "is7038test2@iteso.mx",
+    "name": "JoseTest",
+    "lastName": "navarro",
+    "email": "isTest@iteso.mx",
     "password": "1234",
+    "year": 2020,
     "sexo": "H"
 }
 
@@ -38,7 +50,7 @@ x-auth-user: "CVdf8g90an-4"
 
 {
     "name": "Manuel Update1",
-    "lastName": "Ramírez",
+    "lastName": "Ramirez",
     "email": "is7038Update@iteso.mx",
     "password": "1234",
     "sexo": "H"

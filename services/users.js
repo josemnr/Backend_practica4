@@ -10,8 +10,8 @@ index++;
 class UsersService{
   async getUsers(){
     const usersFiltered = users.map(u =>{
-      const {name, lastName, email, url} = u
-     return {name, lastName, email, url}
+      const {name, lastName, email, year, url} = u
+     return {name, lastName, email, year, url}
     })
     return usersFiltered || null;
   }
@@ -42,15 +42,17 @@ class UsersService{
 
   async createUser(user){
     const validateUserEmail = users.find(u => u.email === user.email);
-    const validateUserName = users.filter(u => u.name.includes(user.name));
+    const validateUserName = users.filter(u => u.name.includes(user.name.toUpperCase()));
     if(validateUserEmail){
       return null;
     }else if(validateUserName){
-      const validateLastName = validateUserName.find(u => u.lastName === user.lastName)
+      const validateLastName = validateUserName.find(u => u.lastName === user.lastName.toUpperCase())
       if(validateLastName){
         return null;
       }
-    }
+    };
+    user.name = user.name.toUpperCase()
+    user.lastName = user.lastName.toUpperCase()
     user.id = index;
     index++;
     if(user.url){
@@ -67,6 +69,12 @@ class UsersService{
     const validateUser = users.find(u => u.email ===  email );
     const index = users.findIndex(u => u.email === email);
     if(validateUser){
+      if(user.name){
+        user.name = user.name.toUpperCase();
+      }
+      if(user.lastName){
+        user.lastName = user.lastName.toUpperCase();
+      }
       user.id = validateUser.id;
       if(index > -1){
         users.splice(index, 1, user);
@@ -92,16 +100,14 @@ class UsersService{
     }
   }
 
-  async getIdByToken(xauthuser){
-    const validateUserToken = users.find(u=> u.token === xauthuser);
-    if(validateUserToken){
-      validateUserToken.token.split("-");
-      validateUserToken.token.pop();
-      return validateUserToken.token;
-    }else{
-      return null;
-    }
-  }
+  // async getIdByToken(xauthuser){
+  //   const validateUserToken = users.find(u => u.token === xauthuser);
+  //   if(validateUserToken){
+  //     return validateUserToken;
+  //   }else{
+  //     return null;
+  //   }
+  // }
 }
 
 module.exports = UsersService;

@@ -1,8 +1,8 @@
 [
-    {"name":"JoseManuel1","lastName":"Navarro","email":"is703801@iteso.mx","password":"1234","sexo":"H","id":1,"url": "https://randomuser.me/api/portraits/men/1.jpg","token":"oVDp8o50Hb-1"},
-    {"name":"JoseManuel2","lastName":"Ramirez","email":"is703802@iteso.mx","password":"1234","sexo":"H","id":2,"url": "https://randomuser.me/api/portraits/men/2.jpg","token":"AjBr5m80Eb-2"},
-    {"name":"JoseManuel3","lastName":"Navarro","email":"is703803@iteso.mx","password":"1234","sexo":"H","id":3,"url": "https://randomuser.me/api/portraits/men/3.jpg","token":"BqcR3m80fs-3"},
-    {"name":"JoseManuel4","lastName":"Ramirez","email":"is703804@iteso.mx","password":"1234","sexo":"H","id":4,"url": "https://randomuser.me/api/portraits/men/4.jpg","token":"CVdf8g90an-4"},
-    {"name":"JoseManuel5","lastName":"Navarro","email":"is703805@iteso.mx","password":"1234","sexo":"H","id":5,"url": "https://randomuser.me/api/portraits/men/5.jpg"},
-    {"name":"JoseManuel6","LastName":"Navarro","email":"is703806@iteso.mx","password":"1234","sexo":"H","id":6,"url": "https://randomuser.me/api/portraits/men/6.jpg"}
+    {"name":"JOSE MANUEL1","lastName":"NAVARRO","email":"is703801@iteso.mx","password":"1234","year":2016,"sexo":"H","id":1,"url": "https://randomuser.me/api/portraits/men/1.jpg","token":"oVDp8o50Hb-1"},
+    {"name":"JOSE2","lastName":"RAMIREZ","email":"is703802@iteso.mx","password":"1234","year":2017,"sexo":"H","id":2,"url": "https://randomuser.me/api/portraits/men/2.jpg","token":"AjBr5m80Eb-2"},
+    {"name":"MANUEL3","lastName":"NAVARRO","email":"is703803@iteso.mx","password":"1234","year":2018,"sexo":"H","id":3,"url": "https://randomuser.me/api/portraits/men/3.jpg","token":"BqcR3m80fs-3"},
+    {"name":"JOSE4","lastName":"RAMIREZ","email":"is703804@iteso.mx","password":"1234","year":2019,"sexo":"H","id":4,"url": "https://randomuser.me/api/portraits/men/4.jpg","token":"CVdf8g90an-4"},
+    {"name":"JOSE MANUEL5","lastName":"NAVARRO","email":"is703805@iteso.mx","year":2019,"password":"1234","sexo":"H","id":5,"url": "https://randomuser.me/api/portraits/men/5.jpg"},
+    {"name":"PABLO6","lastName":"RAMIREZ","email":"is703806@iteso.mx","year":2020,"password":"1234","sexo":"H","id":6,"url": "https://randomuser.me/api/portraits/men/6.jpg"}
 ]

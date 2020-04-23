@@ -66,15 +66,15 @@ const validationHandler = require('../utils/middleware/validationHandlers')
   async function(req, res, next) {
     const  xauthuser  = req.header("x-auth-user");
     try {
-      const users = await usersService.getUsers();
-      // const validateUserToken = await usersService.getIdByToken(xauthuser);
-      // if(validateUserToken){
-      //   req.id = validateUserToken.id;
-      //   console.log(req.id);
-      // }else{
-      //   throw new Error('invalid token');
-      // }
+      var users = await usersService.getUsers();
       if(users){
+        if(req.query.lastName){
+          users = users.filter(u => u.lastName.includes(req.query.lastName.toUpperCase()));
+        }else if(req.query.name){
+          users = users.filter(u => u.name.includes(req.query.name.toUpperCase()));
+        }else if(req.query.year){
+          users = users.filter(u => u.year == req.query.year);
+        }
         console.log(xauthuser)
         res.status(200).json({
           data: users,
@@ -149,20 +149,5 @@ const validationHandler = require('../utils/middleware/validationHandlers')
       next(err);
     }
   });
-
-  function autenticar(req,res, next) {
-    if (req.header("x-auth-user") == undefined) {
-        res.status(401).send('Usuario no autenticado')
-        return
-    }
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].token == req.header("x-auth-user")) {
-            req.id = req.header("x-auth-user").split("-")[1]
-            next()
-            return
-        }
-    }
-    res.status(401).send('Usuario no autenticado')
-  }
 
 module.exports = router;
